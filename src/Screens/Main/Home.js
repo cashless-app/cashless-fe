@@ -1,25 +1,26 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react';
 import {
   View,
   Text,
   ScrollView,
   Image,
   StyleSheet,
-  TouchableHighlight
-} from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+  TouchableHighlight,
+} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 class Home extends Component {
   static navigationOptions = {
-    headerShown: false
-  }
+    headerShown: false,
+  };
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.containerHeader}>
           <View style={styles.containerTop}>
             <View style={styles.containerFlexTop}>
-              <Image style={styles.iconDana}
+              <Image
+                style={styles.iconDana}
                 source={require('../../../assets/top-icon/iconapp-icon-01.png')}
               />
               <Text style={styles.textRp}>Rp</Text>
@@ -86,7 +87,9 @@ class Home extends Component {
                 </View>
                 <View style={styles.containerTextCorona}>
                   <Text style={styles.textCorona}>Update Covid-19</Text>
-                  <Text style={styles.textInfoCorona}>Info Virus Corona Terbaru!</Text>
+                  <Text style={styles.textInfoCorona}>
+                    Info Virus Corona Terbaru!
+                  </Text>
                 </View>
                 <View style={styles.containerButtonCorona}>
                   <TouchableHighlight
@@ -167,7 +170,9 @@ class Home extends Component {
             <View style={styles.containerPromo}>
               <View style={styles.containerTextPromo}>
                 <Text style={styles.textAdaPromo}>Promos For You</Text>
-                <Text style={styles.textHidupLebih}>Everything's better with promos</Text>
+                <Text style={styles.textHidupLebih}>
+                  Everything's better with promos
+                </Text>
               </View>
               <View>
                 <TouchableOpacity style={styles.buttonLihatSemua}>
@@ -194,7 +199,7 @@ class Home extends Component {
                 <Text style={styles.textNearby}>Nearby Me</Text>
                 <Text style={styles.textHidupLebih}>
                   Temukan merchant DANAIN didekat kamu!
-                  </Text>
+                </Text>
               </View>
               <View>
                 <TouchableOpacity style={styles.buttonLihatSemua}>
@@ -249,11 +254,11 @@ class Home extends Component {
           </View>
         </ScrollView>
       </View>
-    )
+    );
   }
 }
 
-export default Home
+export default Home;
 
 const styles = StyleSheet.create({
   container: {
@@ -262,60 +267,60 @@ const styles = StyleSheet.create({
   },
   containerHeader: {
     height: 120,
-    backgroundColor: '#118eea'
+    backgroundColor: '#118eea',
   },
   containerTop: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingTop: 15,
-    marginHorizontal: 15
+    marginHorizontal: 15,
   },
   containerFlexTop: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   iconDana: {
     width: 24,
-    height: 24
+    height: 24,
   },
   TextRp: {
     marginLeft: 9,
-    color: '#a2d8fb'
+    color: '#a2d8fb',
   },
   textNominal: {
     marginLeft: 9,
     fontWeight: 'bold',
     fontSize: 17,
-    color: '#FFF'
+    color: '#FFF',
   },
   iconChart: {
     width: 33,
-    height: 33
+    height: 33,
   },
   containerIconTop: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 1
+    flex: 1,
   },
   containerImageTop: {
-    alignItems: 'center'
+    alignItems: 'center',
   },
   iconTop: {
     width: 40,
     height: 40,
     marginHorizontal: 28,
-    marginBottom: 3
+    marginBottom: 3,
   },
   textIcon: {
     color: '#FFF',
     fontWeight: 'bold',
-    fontSize: 12
+    fontSize: 12,
   },
   containerCorona: {
     backgroundColor: '#118eea',
-    height: 90
+    height: 90,
   },
   topCard: {
     backgroundColor: '#FFF',
@@ -326,39 +331,39 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderColor: '#e3e3e3',
     borderTopLeftRadius: 6,
-    borderTopRightRadius: 6
+    borderTopRightRadius: 6,
   },
   containerFlexCorona: {
     flexDirection: 'row',
     height: 92,
-    paddingBottom: 20
+    paddingBottom: 20,
   },
   containerImageCorona: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   imageCorona: {
     width: 32,
-    height: 47
+    height: 47,
   },
   containerTextCorona: {
     width: 170,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   textCorona: {
     fontWeight: '900',
-    fontSize: 16
+    fontSize: 16,
   },
   textInfoCorona: {
     fontSize: 12,
-    color: '#fb8b01'
+    color: '#fb8b01',
   },
   containerButtonCorona: {
     width: 125,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 2
+    marginTop: 2,
   },
   buttonLihat: {
     backgroundColor: '#118eea',
@@ -366,11 +371,11 @@ const styles = StyleSheet.create({
     height: 37,
     borderRadius: 4,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   textLihat: {
     color: '#FFF',
-    fontSize: 12
+    fontSize: 12,
   },
   bottomCard: {
     backgroundColor: '#FFF',
@@ -381,21 +386,21 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderBottomLeftRadius: 6,
     borderBottomRightRadius: 6,
-    borderColor: '#e3e3e3'
+    borderColor: '#e3e3e3',
   },
   containerImageService: {
     flexDirection: 'row',
-    height: '55%'
+    height: '55%',
   },
   containerImageService2: {
     flexDirection: 'row',
-    flex: 1
+    flex: 1,
   },
   iconMid: {
     width: 38,
     height: 38,
     marginHorizontal: 28,
-    marginBottom: 10
+    marginBottom: 10,
   },
   cardPromo: {
     // backgroundColor: '#FFF',
@@ -408,23 +413,23 @@ const styles = StyleSheet.create({
     // borderLeftWidth: 1,
     // borderRightWidth: 1,
     // borderColor: '#e3e3e3',
-    height: 55
+    height: 55,
   },
   containerPromo: {
     flexDirection: 'row',
     marginHorizontal: 20,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   containerTextPromo: {
-    flex: 1
+    flex: 1,
   },
   textAdaPromo: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   textHidupLebih: {
     fontSize: 12,
     marginTop: 3,
-    color: '#313131'
+    color: '#313131',
   },
   buttonLihatSemua: {
     backgroundColor: '#FFF',
@@ -434,12 +439,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#118eea',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   textLihatSemua: {
     color: '#118eea',
     fontSize: 12,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   bannerPromo: {
     marginHorizontal: 15,
@@ -450,23 +455,23 @@ const styles = StyleSheet.create({
     borderLeftWidth: 1,
     borderColor: '#e3e3e3',
     borderBottomLeftRadius: 6,
-    borderBottomRightRadius: 6
+    borderBottomRightRadius: 6,
   },
   imagePromo: {
     height: 97,
     width: 378,
     alignSelf: 'center',
     borderBottomLeftRadius: 6,
-    borderBottomRightRadius: 6
+    borderBottomRightRadius: 6,
   },
   containerHotPromo: {
-    marginTop: 12
+    marginTop: 12,
   },
   imageHotPromo: {
     height: 86,
     width: 378,
     alignSelf: 'center',
-    borderRadius: 6
+    borderRadius: 6,
   },
   cardNearby: {
     backgroundColor: '#FFF',
@@ -479,23 +484,23 @@ const styles = StyleSheet.create({
     borderLeftWidth: 1,
     borderRightWidth: 1,
     borderColor: '#e3e3e3',
-    height: 75
+    height: 75,
   },
   containerPromo: {
     flexDirection: 'row',
     marginHorizontal: 20,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   textNearby: {
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 5,
-    marginTop: 5
+    marginTop: 5,
   },
   textHidupLebih: {
     fontSize: 12,
     marginTop: 3,
-    color: '#313131'
+    color: '#313131',
   },
   containerNearby: {
     height: 90,
@@ -506,19 +511,20 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderTopWidth: 1,
     borderBottomLeftRadius: 6,
-    borderBottomRightRadius: 6, borderColor: '#e3e3e3'
+    borderBottomRightRadius: 6,
+    borderColor: '#e3e3e3',
   },
   imageNear: {
     marginTop: 13,
     marginHorizontal: 15,
     width: 43,
     height: 43,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   textNear: {
     fontSize: 12,
     color: '#313131',
     alignSelf: 'center',
-    paddingTop: 5
+    paddingTop: 5,
   },
-})
+});

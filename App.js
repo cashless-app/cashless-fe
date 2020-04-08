@@ -9,6 +9,7 @@ import MainNavigation from './src/navigations/MainNavigation';
 // import store from './src/Redux/Store';
 
 const App = () => {
+  console.disableYellowBox = true;
   return (
     <>
       {/* <Provider store={store}> */}

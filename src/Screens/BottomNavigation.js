@@ -1,6 +1,9 @@
 import React from 'react';
 import {StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native';
 
+openHistory = props => {
+  props.navigation.navigate('History');
+};
 const BottomNavigation = () => {
   return (
     <>
@@ -16,18 +19,20 @@ const BottomNavigation = () => {
           <TouchableOpacity>
             <Image
               style={styles.iconNav}
-              source={require('../assets/icons-navi/beranda-icon.png')}
+              source={require('../../assets/icons-navi/beranda-icon.png')}
             />
             <Text style={styles.textIcon}>Home</Text>
           </TouchableOpacity>
         </View>
 
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-          <Image
-            style={styles.iconNav}
-            source={require('../assets/icons-navi/riwayat-icon.png')}
-          />
-          <Text style={styles.textIcon}>History</Text>
+          <TouchableOpacity onPress={this.openHistory}>
+            <Image
+              style={styles.iconNav}
+              source={require('../../assets/icons-navi/riwayat-icon.png')}
+            />
+            <Text style={styles.textIcon}>History</Text>
+          </TouchableOpacity>
         </View>
 
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
@@ -42,7 +47,7 @@ const BottomNavigation = () => {
             }}>
             <Image
               style={styles.iconNavPay}
-              source={require('../assets/icons-navi/pay-icon.png')}
+              source={require('../../assets/icons-navi/pay-icon.png')}
             />
             <Text style={styles.textPay}>Pay</Text>
           </TouchableOpacity>
@@ -51,7 +56,7 @@ const BottomNavigation = () => {
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
           <Image
             style={styles.iconNav}
-            source={require('../assets/icons-navi/pocket-icon.png')}
+            source={require('../../assets/icons-navi/pocket-icon.png')}
           />
           <Text style={styles.textIcon}>Pocket</Text>
         </View>
@@ -59,7 +64,7 @@ const BottomNavigation = () => {
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
           <Image
             style={styles.iconNav}
-            source={require('../assets/icons-navi/saya-icon.png')}
+            source={require('../../assets/icons-navi/saya-icon.png')}
           />
           <Text style={styles.textIcon}>Me</Text>
         </View>
