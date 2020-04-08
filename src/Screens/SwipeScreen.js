@@ -91,8 +91,8 @@ const SwiperScreen = (props) => {
 
                 <View style={styles.containerBottom}>
                     <TouchableOpacity
-                        style={styles.buttonSkip}>
-                        {/* onPress={() => props.navigation.navigate('AuthScreen')}> */}
+                        style={styles.buttonSkip}
+                        onPress={() => props.navigation.navigate('Home')}>
                         <Text style={styles.textSkip}>SKIP</Text>
                     </TouchableOpacity>
                     <Text style={styles.termCondition}>
