@@ -1,5 +1,5 @@
 import React from 'react';
-import SplashScreen from '../Screens/SplashScreens';
+import SplashScreen from '../Screens/SplashScreen';
 import Home from '../Screens/Main/Home';
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
@@ -7,9 +7,14 @@ import {createStackNavigator} from 'react-navigation-stack';
 import TabScreen from '../Screens/Main/TabScreen';
 import HistoryNavigation from './HistoryNavigation';
 
-const StackLoading = createStackNavigator({
-  SplashScreen,
-});
+const StackLoading = createStackNavigator(
+  {
+    SplashScreen,
+  },
+  {
+    headerMode: 'none',
+  },
+);
 
 const StackApp = createStackNavigator(
   {
@@ -23,10 +28,11 @@ const StackApp = createStackNavigator(
 
 const Router = createStackNavigator(
   {
+    StackLoading,
     StackApp,
   },
   {
-    // initialRouteName: 'StackLoading',
+    initialRouteName: 'StackLoading',
     headerMode: 'none',
   },
 );

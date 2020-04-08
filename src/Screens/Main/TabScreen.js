@@ -23,6 +23,7 @@ const BottomNavigator = createBottomTabNavigator(
       screen: History,
       navigationOptions: {
         tabBarLabel: 'History',
+        tabBarVisible: false,
       },
     },
     // Pay: {
