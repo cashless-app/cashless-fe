@@ -1,34 +1,49 @@
-import React from 'react'
-import {
-    View,
-    Image,
-    Text,
-    StyleSheet
-} from 'react-native'
+import React, { useEffect, useState } from 'react';
+import { StatusBar, View, Image, StyleSheet } from 'react-native';
 
-const LoadingScreen = props => {
-    // const navigation = useNavigation();
+const SplashScreen = props => {
+    // const {resultLogin} = useSelector(state => state.auth);
+    // const dispatch = useDispatch()
+
     useEffect(() => {
-        firebase.auth().onAuthStateChanged(user => {
-            props.navigation.navigate(user ? 'App' : 'Auth');
-        });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        const getLoading = async () => {
+            const disLoading = '234dkfjeiwksdfj';
+            console.log('disloading value:', disLoading.value);
+            if (disLoading == '234dkfjeiwksdfj') {
+                setTimeout(() => {
+                    props.navigation.navigate('SwipeScreen');
+                }, 3000);
+            } else {
+                props.navigation.navigate('SwipeScreen');
+            }
+        };
+        getLoading();
     }, []);
+
     return (
-        <View style={styles.container}>
-            <Text>Loading ...</Text>
-            <ActivityIndicator size="large" />
-        </View>
+        <>
+            <View style={styles.container}>
+                <Image
+                    source={require('../../assets/danaku-text.png')}
+                    style={styles.image}
+                />
+            </View>
+        </>
     );
 };
-
-export default LoadingScreen;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#118eea'
-    }
-})
+        backgroundColor: '#118eea',
+    },
+    image: {
+        width: 300,
+        height: 40,
+    },
+});
+
+export default SplashScreen;

@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Text, View, TouchableOpacity, Image} from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, TouchableOpacity, Image } from 'react-native';
 import HistoryNavigation from '../../navigations/HistoryNavigation';
 
 const RiwayatScreen = props => {
@@ -18,13 +18,13 @@ const RiwayatScreen = props => {
             flexDirection: 'row',
           }}>
           <TouchableOpacity
-            onPress={() => props.navigation.navigate('TabScreen')}>
+            onPress={() => props.navigation.navigate('Home')}>
             <Image
-              style={{width: 13, height: 13}}
-              source={require('../../assets/arrow-left.png')}
+              style={{ width: 13, height: 13 }}
+              source={require('../../../assets/arrow-left.png')}
             />
           </TouchableOpacity>
-          <Text style={{color: 'white', fontSize: 19, paddingLeft: 25}}>
+          <Text style={{ color: 'white', fontSize: 19, paddingLeft: 25 }}>
             Transaction History
           </Text>
         </View>

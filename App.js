@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StatusBar} from 'react-native';
+import { View, StatusBar } from 'react-native';
 
 import MainNavigation from './src/navigations/MainNavigation';
 // import PromoDetailScreen from './src/screens/PromoDetailScreen';
@@ -9,6 +9,7 @@ import MainNavigation from './src/navigations/MainNavigation';
 // import store from './src/Redux/Store';
 
 const App = () => {
+  console.disableYellowBox = true
   return (
     <>
       {/* <Provider store={store}> */}
