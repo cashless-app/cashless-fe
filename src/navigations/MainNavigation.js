@@ -1,5 +1,5 @@
 import React from 'react';
-import SplashScreen from '../Screens/SplashScreens';
+import SplashScreen from '../Screens/SplashScreen';
 import Home from '../Screens/Main/Home';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
