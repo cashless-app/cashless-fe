@@ -9,13 +9,12 @@ const SplashScreen = props => {
   useEffect(() => {
     const getLoading = async () => {
       const disLoading = '234dkfjeiwksdfj';
-      console.log('disloading value:', disLoading.value);
       if (disLoading == '234dkfjeiwksdfj') {
         setTimeout(() => {
-          props.navigation.navigate('TabScreen');
+          props.navigation.navigate('SwipeScreen');
         }, 3000);
       } else {
-        props.navigation.navigate('SwiperScreen');
+        props.navigation.navigate('SwipeScreen');
       }
     };
     getLoading();

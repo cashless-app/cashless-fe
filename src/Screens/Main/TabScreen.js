@@ -1,15 +1,15 @@
 import React from 'react';
-import { Image } from 'react-native';
-import { createAppContainer } from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+import {Image} from 'react-native';
+import {createAppContainer} from 'react-navigation';
+import {createBottomTabNavigator} from 'react-navigation-tabs';
 
 //Content
 import Home from './Home';
 import History from './HistoryScreen.js';
-// import Pay from './PayScreen';
+import Pay from './PayScreen';
 import Pocket from './PocketScreen';
 import ButtonPay from './ButtonPay';
-import Profile from '../Profile/Profile';
+import Profile from '../Profile/';
 
 const BottomNavigator = createBottomTabNavigator(
   {
@@ -23,13 +23,14 @@ const BottomNavigator = createBottomTabNavigator(
       screen: History,
       navigationOptions: {
         tabBarLabel: 'History',
-        tabBarVisible: false
+        tabBarVisible: false,
       },
     },
     Pay: {
-      screen: () => null, // Empty screen
+      screen: Pay, // Empty screen
       navigationOptions: () => ({
         tabBarIcon: <ButtonPay />, // Plus button component
+        tabBarVisible: false,
         tabBarOptions: {
           activeTintColor: 'white',
           tabStyle: {
@@ -47,25 +48,24 @@ const BottomNavigator = createBottomTabNavigator(
       screen: Pocket,
       navigationOptions: {
         tabBarLabel: 'Pocket',
-        tabBarVisible: false
+        tabBarVisible: false,
       },
     },
-    Saya: {
+    Profile: {
       screen: Profile,
       navigationOptions: {
         tabBarLabel: 'Profile',
-
-      }
+      },
     },
   },
   {
     //router config
     initialRouteName: 'Home',
-    Beranda: ['Home', 'Riwayat'],
-    defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused }) => {
-        const { routeName } = navigation.state;
-        let focus = { width: 28, height: 28 };
+    Home: ['Home', 'History', 'Pay', 'Pocket', 'Profile'],
+    defaultNavigationOptions: ({navigation}) => ({
+      tabBarIcon: ({focused}) => {
+        const {routeName} = navigation.state;
+        let focus = {width: 28, height: 28};
         let sourceImage;
 
         if (routeName === 'Home') {
@@ -73,9 +73,9 @@ const BottomNavigator = createBottomTabNavigator(
         } else if (routeName === 'History') {
           sourceImage = require('../../../assets/icons-navi/riwayat-icon.png');
         } else if (routeName === 'Profile') {
-          sourceImage = require('../../../assets/icons-navi/saya-icon.png')
+          sourceImage = require('../../../assets/icons-navi/saya-icon.png');
         } else {
-          sourceImage = require('../../../assets/icons-navi/pocket-icon.png')
+          sourceImage = require('../../../assets/icons-navi/pocket-icon.png');
         }
 
         return <Image style={focus} source={sourceImage} />;
