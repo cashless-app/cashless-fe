@@ -1,5 +1,5 @@
 import React from 'react';
-import SplashScreen from '../Screens/SplashScreen';
+import SplashScreen from '../Screens/SplashScreens'
 import Home from '../Screens/Main/Home';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
@@ -7,11 +7,12 @@ import { createStackNavigator } from 'react-navigation-stack';
 import TabScreen from '../Screens/Main/TabScreen';
 import HistoryNavigation from './HistoryNavigation';
 import SwipeScreen from '../Screens/SwipeScreen'
+import Login from '../Screens/Login'
 
 const StackLoading = createStackNavigator(
   {
     SplashScreen,
-    SwipeScreen
+    SwipeScreen,
   },
   {
     initialRouteName: 'SplashScreen',
@@ -19,9 +20,18 @@ const StackLoading = createStackNavigator(
   }
 );
 
+const StackAuth = createStackNavigator(
+  {
+    Login
+  },
+  {
+    initialRouteName: 'Login',
+    headerMode: 'none'
+  }
+)
+
 const StackApp = createStackNavigator(
   {
-    StackLoading,
     TabScreen,
     HistoryNavigation,
   },
@@ -33,6 +43,7 @@ const StackApp = createStackNavigator(
 const Router = createStackNavigator(
   {
     StackLoading,
+    StackAuth,
     StackApp,
   },
   {

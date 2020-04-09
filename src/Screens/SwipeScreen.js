@@ -92,7 +92,7 @@ const SwiperScreen = (props) => {
                 <View style={styles.containerBottom}>
                     <TouchableOpacity
                         style={styles.buttonSkip}
-                        onPress={() => props.navigation.navigate('Home')}>
+                        onPress={() => props.navigation.navigate('Login')}>
                         <Text style={styles.textSkip}>SKIP</Text>
                     </TouchableOpacity>
                     <Text style={styles.termCondition}>
