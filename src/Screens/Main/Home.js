@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -7,7 +7,7 @@ import {
   StyleSheet,
   TouchableHighlight,
 } from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 class Home extends Component {
   state = {
@@ -118,9 +118,10 @@ class Home extends Component {
               <View style={styles.containerImageTop}>
                 <Image
                   style={styles.iconMid}
-                  source={require('../../../assets/mid-icon/games-icon.png')}
+                  source={require('../../../assets/mid-icon/mrecharge-icon.png')}
                 />
-                <Text style={styles.textMid}>Games</Text>
+                <Text style={styles.textMid}>Mobile</Text>
+                <Text style={styles.textMid}>Recharge</Text>
               </View>
 
               <View style={styles.containerImageTop}>
@@ -133,9 +134,9 @@ class Home extends Component {
               <View style={styles.containerImageTop}>
                 <Image
                   style={styles.iconMid}
-                  source={require('../../../assets/mid-icon/telepon-icon.png')}
+                  source={require('../../../assets/mid-icon/water-icon.png')}
                 />
-                <Text style={styles.textMid}>Telepon</Text>
+                <Text style={styles.textMid}>Water</Text>
               </View>
               <View style={styles.containerImageTop}>
                 <Image
@@ -149,15 +150,7 @@ class Home extends Component {
               <View style={styles.containerImageTop}>
                 <Image
                   style={styles.iconMid}
-                  source={require('../../../assets/mid-icon/pascabayar-icon.png')}
-                />
-                <Text style={styles.textMid}>Pascabayar</Text>
-              </View>
-
-              <View style={styles.containerImageTop}>
-                <Image
-                  style={styles.iconMid}
-                  source={require('../../../assets/mid-icon/tariksaldo-icon.png')}
+                  source={require('../../../assets/mid-icon/cashout-icon.png')}
                 />
                 <Text style={styles.textMid}>Cashout</Text>
               </View>
@@ -165,7 +158,15 @@ class Home extends Component {
               <View style={styles.containerImageTop}>
                 <Image
                   style={styles.iconMid}
-                  source={require('../../../assets/mid-icon/danakaget-icon.png')}
+                  source={require('../../../assets/mid-icon/tinder-icon.png')}
+                />
+                <Text style={styles.textMid}>Tinder</Text>
+              </View>
+
+              <View style={styles.containerImageTop}>
+                <Image
+                  style={styles.iconMid}
+                  source={require('../../../assets/mid-icon/bank-icon.png')}
                 />
                 <Text style={styles.textMid}>DANAKU Kaget</Text>
               </View>
@@ -391,7 +392,7 @@ const styles = StyleSheet.create({
   bottomCard: {
     backgroundColor: '#FFF',
     marginHorizontal: 15,
-    height: 184,
+    height: 200,
     borderBottomWidth: 1,
     borderLeftWidth: 1,
     borderRightWidth: 1,
@@ -401,7 +402,7 @@ const styles = StyleSheet.create({
   },
   containerImageService: {
     flexDirection: 'row',
-    height: '55%',
+    height: '50%',
   },
   containerImageService2: {
     flexDirection: 'row',
