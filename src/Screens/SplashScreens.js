@@ -14,7 +14,7 @@ const SplashScreen = props => {
                     props.navigation.navigate('SwipeScreen');
                 }, 3000);
             } else {
-                props.navigation.navigate('SwipeScreen');
+                props.navigation.navigate('Login');
             }
         };
         getLoading();
