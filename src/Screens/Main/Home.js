@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   View,
   Text,
@@ -6,15 +6,33 @@ import {
   Image,
   StyleSheet,
   TouchableHighlight,
+  FlatList,
 } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+
+const dataPromo = [
+  {
+    id: '1',
+    image: '../../../assets/promo-icon/promo1.png',
+  },
+  {
+    id: '2',
+    image: '../../../assets/promo-icon/promo1.png',
+  },
+  {
+    id: '3',
+    image: '../../../assets/promo-icon/promo1.png',
+  },
+];
 
 class Home extends Component {
-  state = {
-    item: [1, 2, 3],
-  };
   static navigationOptions = {
     headerShown: false,
+  };
+
+  renderPromo = item => {
+    console.log('item', item.item.image);
+    return <Image style={styles.imagePromo} source={{uri: item.item.image}} />;
   };
 
   render() {
@@ -195,9 +213,11 @@ class Home extends Component {
             </View>
           </View>
           <View style={styles.bannerPromo}>
-            <Image
-              style={styles.imagePromo}
-              source={require('../../../assets/promo-icon/promo1.png')}
+            <FlatList
+              horizontal
+              data={dataPromo}
+              renderItem={this.renderPromo}
+              keyExtractor={item => item.id}
             />
           </View>
           <View style={styles.containerHotPromo}>
