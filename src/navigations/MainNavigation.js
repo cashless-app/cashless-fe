@@ -1,13 +1,14 @@
 import React from 'react';
 import SplashScreen from '../Screens/SplashScreens'
 import Home from '../Screens/Main/Home';
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { createStackNavigator } from 'react-navigation-stack';
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
+import {createBottomTabNavigator} from 'react-navigation-tabs';
+import {createStackNavigator} from 'react-navigation-stack';
 import TabScreen from '../Screens/Main/TabScreen';
 import HistoryNavigation from './HistoryNavigation';
-import SwipeScreen from '../Screens/SwipeScreen'
-import Login from '../Screens/Login'
+import SwipeScreen from '../Screens/SwipeScreen';
+import TransferScreen from '../Screens/Transaction/TransferScreen';
+import HomeScanner from '../Screens/Scan/HomeScanner';
 
 const StackLoading = createStackNavigator(
   {
@@ -16,8 +17,8 @@ const StackLoading = createStackNavigator(
   },
   {
     initialRouteName: 'SplashScreen',
-    headerMode: "none"
-  }
+    headerMode: 'none',
+  },
 );
 
 const StackAuth = createStackNavigator(
@@ -33,6 +34,8 @@ const StackAuth = createStackNavigator(
 const StackApp = createStackNavigator(
   {
     TabScreen,
+    HomeScanner,
+    TransferScreen,
     HistoryNavigation,
   },
   {

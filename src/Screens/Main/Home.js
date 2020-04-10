@@ -10,9 +10,13 @@ import {
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 class Home extends Component {
+  state = {
+    item: [1, 2, 3],
+  };
   static navigationOptions = {
     headerShown: false,
   };
+
   render() {
     return (
       <View style={styles.container}>
@@ -38,10 +42,13 @@ class Home extends Component {
 
           <View style={styles.containerIconTop}>
             <View style={styles.containerImageTop}>
-              <Image
-                style={styles.iconTop}
-                source={require('../../../assets/top-icon/pindai-icon.png')}
-              />
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('HomeScanner')}>
+                <Image
+                  style={styles.iconTop}
+                  source={require('../../../assets/top-icon/pindai-icon.png')}
+                />
+              </TouchableOpacity>
               <Text style={styles.textIcon}>Scan</Text>
             </View>
 
@@ -56,7 +63,10 @@ class Home extends Component {
             </View>
 
             <View style={styles.containerImageTop}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() =>
+                  this.props.navigation.navigate('TransferScreen')
+                }>
                 <Image
                   style={styles.iconTop}
                   source={require('../../../assets/top-icon/kirim-icon.png')}
@@ -66,10 +76,12 @@ class Home extends Component {
             </View>
 
             <View style={styles.containerImageTop}>
-              <Image
-                style={styles.iconTop}
-                source={require('../../../assets/top-icon/minta-icon.png')}
-              />
+              <TouchableOpacity>
+                <Image
+                  style={styles.iconTop}
+                  source={require('../../../assets/top-icon/minta-icon.png')}
+                />
+              </TouchableOpacity>
               <Text style={styles.textIcon}>Request</Text>
             </View>
           </View>
@@ -156,8 +168,7 @@ class Home extends Component {
                   style={styles.iconMid}
                   source={require('../../../assets/mid-icon/bank-icon.png')}
                 />
-                <Text style={styles.textMid}>Transfer to</Text>
-                <Text style={styles.textMid}>Bank</Text>
+                <Text style={styles.textMid}>DANAKU Kaget</Text>
               </View>
               <View style={styles.containerImageTop}>
                 <Image
@@ -178,7 +189,7 @@ class Home extends Component {
               </View>
               <View>
                 <TouchableOpacity style={styles.buttonLihatSemua}>
-                  <Text style={styles.textLihatSemua}>LIHAT SEMUA</Text>
+                  <Text style={styles.textLihatSemua}>SEE ALL</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -200,12 +211,12 @@ class Home extends Component {
               <View style={styles.containerTextPromo}>
                 <Text style={styles.textNearby}>Nearby Me</Text>
                 <Text style={styles.textHidupLebih}>
-                  Temukan merchant DANAIN didekat kamu!
+                  Temukan merchant DANAKU didekat kamu!
                 </Text>
               </View>
               <View>
                 <TouchableOpacity style={styles.buttonLihatSemua}>
-                  <Text style={styles.textLihatSemua}>LIHAT SEMUA</Text>
+                  <Text style={styles.textLihatSemua}>SEE ALL</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -286,13 +297,12 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
   },
-  TextRp: {
+  textRp: {
     marginLeft: 9,
     color: '#a2d8fb',
   },
   textNominal: {
     marginLeft: 9,
-    fontWeight: 'bold',
     fontSize: 17,
     color: '#FFF',
   },
