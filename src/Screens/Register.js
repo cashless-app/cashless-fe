@@ -17,12 +17,12 @@ class Register extends Component {
         phone: '',
         email: '',
         password: '',
-        role: 'Nasabah'
+        role: ''
     };
 
-    loginProcess = async () => {
-        const { phone } = this.state;
-        const userData = { phone };
+    registerProcess = async () => {
+        const { name, phone, email, password, role } = this.state;
+        const userData = { name, phone, email, password, role };
         this.props
             .dispatch(register(userData, this.props.navigation))
     };
@@ -38,7 +38,7 @@ class Register extends Component {
                             />
                         </View>
                         <View style={{ width: 60 }}>
-                            <TouchableOpacity onPress={this.registerProcess}>
+                            <TouchableOpacity onPress={event => this.registerProcess(event)}>
                                 <Text
                                     style={styles.textNext}>
                                     Next
@@ -67,7 +67,7 @@ class Register extends Component {
                     <View style={styles.containerInd2}>
                         <Text style={styles.textInd}>+62</Text>
                         <TextInput
-                            onChangeTest={e => {
+                            onChangeText={e => {
                                 this.setState({ phone: e })
                             }}
                             style={styles.textInput}
@@ -85,7 +85,6 @@ class Register extends Component {
                                 this.setState({ email: e })
                             }}
                             style={styles.textInput}
-                            maxLength={25}
                             placeholder="Email"
                             placeholderTextColor="#84c8f9"
                             underlineColorAndroid="transparent"
@@ -98,6 +97,7 @@ class Register extends Component {
                                 this.setState({ password: e })
                             }}
                             style={styles.textInput}
+                            secureTextEntry
                             maxLength={16}
                             placeholder="Password"
                             placeholderTextColor="#84c8f9"
@@ -110,7 +110,6 @@ class Register extends Component {
                             onChangeText={e => {
                                 this.setState({ role: e })
                             }}
-                            value={this.state.role}
                             style={styles.textInput}
                             maxLength={16}
                             placeholder="Nasabah"

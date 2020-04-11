@@ -4,9 +4,10 @@ import { ToastAndroid } from 'react-native';
 
 export const login = (formdata, props) => ({
   type: 'POST_LOGIN',
-  payload: Axios.post('192.168.100.199:2010/api/v1/auth/login', formdata).then(
+  payload: Axios.post('http://192.168.100.199:2010/api/v1/auth/login', formdata).then(
     result => {
       if (result.data.status === 200) {
+        ToastAndroid.show('Login Success', ToastAndroid.SHORT)
         try {
           AsyncStorage.setItem('KEY_TOKEN', result.data.data.token);
           AsyncStorage.setItem('id', JSON.stringify(result.data.data.id));
@@ -21,17 +22,20 @@ export const login = (formdata, props) => ({
   ),
 });
 
-export const register = formdata => ({
+export const register = (formdata, props) => ({
   type: 'POST_REGISTER',
-  payload: Axios.post('192.168.100.199:2010/api/v1/auth/register', formdata).then(
+  payload: Axios.post('http://192.168.100.199:2010/api/v1/auth/register', formdata).then(
     result => {
+      console.log('coba', result.data.token);
+
       if (result.data.status === 200) {
+        ToastAndroid.show('Register Success', ToastAndroid.SHORT)
         try {
-          AsyncStorage.setItem('KEY_TOKEN', result.data.data.token)
-          porps.navigate('Login')
+          AsyncStorage.setItem('KEY_TOKEN', result.data.token)
+          props.navigate('Home')
         } catch (error) {
-          console.log(error);
-          alert('Oops something went wrong!')
+          console.log('test', error);
+          ToastAndroid.show('Oops something went wrong!', ToastAndroid.SHORT)
         }
       }
     }
