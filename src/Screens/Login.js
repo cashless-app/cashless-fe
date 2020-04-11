@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {login} from '../Redux/Actions/auth';
+// import Input from './Regex/Input';
 
 import {
   View,
@@ -10,6 +11,7 @@ import {
   ActivityIndicator,
   TouchableOpacity,
   Image,
+  ToastAndroid,
 } from 'react-native';
 
 class Login extends Component {
@@ -30,7 +32,7 @@ class Login extends Component {
       .catch(err => {
         console.log(err);
         this.props.navigation.navigate('Login');
-        alert('Phone number is wrong');
+        ToastAndroid.show('Phone number is wrong', ToastAndroid.SHORT);
       });
   };
   render() {

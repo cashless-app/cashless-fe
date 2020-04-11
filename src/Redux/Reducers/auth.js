@@ -29,7 +29,7 @@ const authReducers = (state = initialValue, action) => {
         ...state,
         isPending: false,
         isFulfilled: true,
-        adminData: action.payload,
+        userData: action.payload,
       };
 
     default:
