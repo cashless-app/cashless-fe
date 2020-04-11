@@ -29,7 +29,28 @@ const authReducers = (state = initialValue, action) => {
         ...state,
         isPending: false,
         isFulfilled: true,
-        adminData: action.payload,
+        userData: action.payload,
+      };
+    case 'POST_REGISTER_PENDING':
+      return {
+        ...state,
+        isPending: true,
+        isRejected: false,
+        isFulfilled: false,
+      };
+    case 'POST_REGISTER_REJECTED':
+      return {
+        ...state,
+        isPending: false,
+        isRejected: true,
+        errorMsg: action.payload.data,
+      };
+    case 'POST_REGISTER_FULFILLED':
+      return {
+        ...state,
+        isPending: false,
+        isFulfilled: true,
+        userData: action.payload,
       };
 
     default:
