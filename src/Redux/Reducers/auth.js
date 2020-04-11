@@ -22,7 +22,7 @@ const authReducers = (state = initialValue, action) => {
         ...state,
         isPending: false,
         isRejected: true,
-        errorMsg: action.payload.data,
+        errorMsg: action.payload,
       };
     case 'POST_LOGIN_FULFILLED':
       return {
@@ -39,12 +39,14 @@ const authReducers = (state = initialValue, action) => {
         isFulfilled: false,
       };
     case 'POST_REGISTER_REJECTED':
+      state.userData.push(JSON.parse(action.payload.response.data.message));
       return {
         ...state,
         isPending: false,
         isRejected: true,
-        errorMsg: action.payload.data,
+        errorMsg: action.payload.response.data.message,
       };
+
     case 'POST_REGISTER_FULFILLED':
       return {
         ...state,

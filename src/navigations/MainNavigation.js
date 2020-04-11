@@ -1,9 +1,9 @@
 import React from 'react';
 import SplashScreen from '../Screens/SplashScreens';
 import Home from '../Screens/Main/Home';
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { createStackNavigator } from 'react-navigation-stack';
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
+import {createBottomTabNavigator} from 'react-navigation-tabs';
+import {createStackNavigator} from 'react-navigation-stack';
 import TabScreen from '../Screens/Main/TabScreen';
 import HistoryNavigation from './HistoryNavigation';
 import SwipeScreen from '../Screens/SwipeScreen';
@@ -26,10 +26,10 @@ const StackLoading = createStackNavigator(
 const StackAuth = createStackNavigator(
   {
     Login,
-    Register
+    Register,
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'Register',
     headerMode: 'none',
   },
 );
@@ -53,7 +53,8 @@ const Router = createStackNavigator(
     StackApp,
   },
   {
-    initialRouteName: 'StackLoading',
+    // initialRouteName: 'StackLoading',
+    initialRouteName: 'StackAuth',
     headerMode: 'none',
   },
 );
