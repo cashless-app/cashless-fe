@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Image,
   View,
@@ -63,7 +63,7 @@ const EditEmailScreen = props => {
     setDisable(true);
   };
 
-  useEffect(() => {}, [save]);
+  useEffect(() => { }, [save]);
 
   return (
     <View style={styles.container}>
@@ -78,7 +78,7 @@ const EditEmailScreen = props => {
           <Text style={styles.titleText}>Daftarkan alamat email kamu!</Text>
           <Text style={styles.subtitleText}>
             Email kamu tidak akan dipublikasikan dan hanya digunakan untuk
-            proses verifikasi akun DANAKU kamu
+            proses verifikasi akun DANAKU
           </Text>
         </View>
         <Text
@@ -86,10 +86,10 @@ const EditEmailScreen = props => {
             color: !isEdit
               ? '#ababab'
               : isEmpty
-              ? '#fb9b1a'
-              : isEmailValid
-              ? '#ababab'
-              : 'red',
+                ? '#fb9b1a'
+                : isEmailValid
+                  ? '#ababab'
+                  : 'red',
             marginLeft: 10,
           }}>
           Alamat email
@@ -99,14 +99,14 @@ const EditEmailScreen = props => {
             !isEdit
               ? styles.editForm
               : isEmailValid
-              ? styles.editActivate
-              : styles.editWarning
+                ? styles.editActivate
+                : styles.editWarning
           }>
           <TextInput
             value={email}
             placeholder="Ketik disini"
             onChangeText={email => handleChangeEmail(email)}
-            style={{color: !isEdit ? '#ababab' : 'black', fontSize: 18}}
+            style={{ color: !isEdit ? '#ababab' : 'black', fontSize: 18 }}
           />
           {isEmpty ? null : (
             <TouchableOpacity
@@ -166,13 +166,13 @@ const styles = StyleSheet.create({
   },
   imgContainer: {
     // backgroundColor: "red",
-    height: 90,
+    height: 99,
     justifyContent: 'center',
-    alignItems: 'center',
+    // alignItems: 'center',
   },
   image: {
-    height: 80,
-    width: 350,
+    height: 74,
+    width: 349,
     // resizeMode: 40
   },
   cancel: {

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import {
   Image,
   ScrollView,
@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-import {ListItem} from 'react-native-elements';
+import { ListItem } from 'react-native-elements';
 // import {useSelector, useDispatch} from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 // import {getUser} from '../../Redux/Actions/user';
@@ -203,8 +203,8 @@ const ProfileScreen = props => {
               title={l.title}
               titleStyle={styles.listFont}
               rightTitle={l.rightTitle}
-              rightTitleStyle={{fontSize: 15, color: '#78b9e3'}}
-              chevron={{size: 24}}
+              rightTitleStyle={{ fontSize: 15, color: '#78b9e3' }}
+              chevron={{ size: 24 }}
               onPress={e => onPressOptions(e, l.screen)}
               containerStyle={styles.listItemContainer}
               leftIcon={
@@ -236,8 +236,8 @@ const ProfileScreen = props => {
               title={l.title}
               titleStyle={styles.listFont}
               rightTitle={l.rightTitle}
-              chevron={{size: 24}}
-              rightTitleStyle={{fontSize: 15}}
+              chevron={{ size: 24 }}
+              rightTitleStyle={{ fontSize: 15 }}
               onPress={e => onPressOptions(e, l.screen)}
               containerStyle={styles.listItemContainer}
             />
@@ -248,8 +248,8 @@ const ProfileScreen = props => {
               title={l.title}
               titleStyle={styles.listFont}
               rightTitle={l.rightTitle}
-              rightTitleStyle={{fontSize: 15}}
-              chevron={{size: 24}}
+              rightTitleStyle={{ fontSize: 15 }}
+              chevron={{ size: 24 }}
               onPress={e => onPressOptions(e, l.screen)}
               containerStyle={styles.listItemContainer}
             />
@@ -257,7 +257,7 @@ const ProfileScreen = props => {
         </View>
         {/* ---------- */}
 
-        <View style={{height: 250}} />
+        <View style={{ height: 250 }} />
       </ScrollView>
     </View>
   );
@@ -265,7 +265,7 @@ const ProfileScreen = props => {
 
 export default ProfileScreen;
 
-const InfoText = ({text}) => (
+const InfoText = ({ text }) => (
   <View style={styles.infoTextContainer}>
     <Text style={styles.infoText}>{text}</Text>
   </View>

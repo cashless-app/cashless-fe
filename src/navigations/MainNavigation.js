@@ -42,20 +42,25 @@ const StackApp = createStackNavigator(
     HistoryNavigation,
   },
   {
+    // initialRouteName: 'TransferScreen',
     headerMode: 'none',
   },
 );
 
-const Router = createStackNavigator(
-  {
-    StackLoading,
-    StackAuth,
-    StackApp,
-  },
-  {
-    initialRouteName: 'StackLoading',
-    headerMode: 'none',
-  },
+export default createAppContainer(
+  createSwitchNavigator(
+    {
+      StackLoading,
+      StackAuth,
+      StackApp,
+    },
+    {
+      // initialRouteName: 'StackApp',
+      initialRouteName: 'StackLoading',
+
+      headerMode: 'none',
+    },
+  ),
 );
 
-export default createAppContainer(Router);
+

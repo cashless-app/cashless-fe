@@ -41,3 +41,10 @@ export const register = (formdata, props) => ({
     }
   )
 })
+
+export const getToken = () => {
+  return {
+    type: 'GET_TOKEN',
+    payload: AsyncStorage.getItem('user')
+  };
+};

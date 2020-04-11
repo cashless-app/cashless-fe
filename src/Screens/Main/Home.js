@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -8,7 +8,7 @@ import {
   TouchableHighlight,
   FlatList,
 } from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const dataPromo = [
   {
@@ -32,7 +32,7 @@ class Home extends Component {
 
   renderPromo = item => {
     console.log('item', item.item.image);
-    return <Image style={styles.imagePromo} source={{uri: item.item.image}} />;
+    return <Image style={styles.imagePromo} source={{ uri: item.item.image }} />;
   };
 
   render() {
@@ -186,7 +186,8 @@ class Home extends Component {
                   style={styles.iconMid}
                   source={require('../../../assets/mid-icon/bank-icon.png')}
                 />
-                <Text style={styles.textMid}>DANAKU Kaget</Text>
+                <Text style={styles.textMid}>Transfer to</Text>
+                <Text style={styles.textMid}>Bank</Text>
               </View>
               <View style={styles.containerImageTop}>
                 <Image
