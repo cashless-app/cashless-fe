@@ -24,16 +24,7 @@ class Login extends Component {
   loginProcess = async () => {
     const {phone} = this.state;
     const userData = {phone};
-    this.props
-      .dispatch(login(userData))
-      .then(result => {
-        this.props.navigation.navigate('Home');
-      })
-      .catch(err => {
-        console.log(err);
-        this.props.navigation.navigate('Login');
-        ToastAndroid.show('Phone number is wrong', ToastAndroid.SHORT);
-      });
+    this.props.dispatch(login(userData, this.props.navigation));
   };
   render() {
     console.log('phone', this.state.phone);
@@ -47,7 +38,7 @@ class Login extends Component {
             />
           </View>
           <View style={{width: 60}}>
-            <TouchableOpacity onPress={this.loginProcess}>
+            <TouchableOpacity onPress={event => this.loginProcess(event)}>
               <Text style={styles.textNext}>Next</Text>
             </TouchableOpacity>
           </View>
@@ -93,6 +84,13 @@ class Login extends Component {
             source={require('../../assets/many-icon.png')}
             style={styles.iconCon}
           />
+        </View>
+        <View style={styles.newAccount}>
+          <Text
+            style={styles.textAccount}
+            onPress={() => this.props.navigation.navigate('Register')}>
+            Register
+          </Text>
         </View>
       </View>
     );
@@ -172,5 +170,13 @@ const styles = StyleSheet.create({
   iconCon: {
     width: 40,
     height: 40,
+  },
+  newAccount: {
+    paddingTop: 20,
+    alignItems: 'center',
+  },
+  textAccount: {
+    color: '#FFF',
+    fontSize: 13,
   },
 });
