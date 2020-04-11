@@ -54,6 +54,27 @@ const authReducers = (state = initialValue, action) => {
         isFulfilled: true,
         userData: action.payload,
       };
+    case 'GET_TOKEN_PENDING':
+      return {
+        ...state,
+        isLoading: true,
+        isRejected: false,
+        isFulfilled: false,
+      };
+    case 'GET_TOKEN_REJECTED':
+      return {
+        ...state,
+        isLoading: false,
+        isRejected: true,
+      };
+    case 'GET_TOKEN_FULFILLED':
+      // console.log(action.payload ? JSON.parse(action.payload) : [], 'REDUCER');
+      return {
+        ...state,
+        isLoading: false,
+        isFulfilled: true,
+        resultLogin: action.payload ? JSON.parse(action.payload) : []
+      };
 
     default:
       return state;

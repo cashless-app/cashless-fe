@@ -29,7 +29,6 @@ const StackAuth = createStackNavigator(
     Register,
   },
   {
-    initialRouteName: 'Register',
     headerMode: 'none',
   },
 );
@@ -42,21 +41,23 @@ const StackApp = createStackNavigator(
     HistoryNavigation,
   },
   {
+    // initialRouteName: 'TransferScreen',
     headerMode: 'none',
   },
 );
 
-const Router = createStackNavigator(
-  {
-    StackLoading,
-    StackAuth,
-    StackApp,
-  },
-  {
-    // initialRouteName: 'StackLoading',
-    initialRouteName: 'StackAuth',
-    headerMode: 'none',
-  },
-);
+export default createAppContainer(
+  createSwitchNavigator(
+    {
+      StackLoading,
+      StackAuth,
+      StackApp,
+    },
+    {
+      // initialRouteName: 'StackApp',
+      initialRouteName: 'StackLoading',
 
-export default createAppContainer(Router);
+      headerMode: 'none',
+    },
+  ),
+);
