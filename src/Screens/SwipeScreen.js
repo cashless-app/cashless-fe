@@ -29,26 +29,12 @@ const SwiperScreen = (props) => {
                     showsButtons={true}
                     dot={
                         <View
-                            style={{
-                                backgroundColor: 'rgba(255,255,255,.3)',
-                                width: 13,
-                                height: 13,
-                                borderRadius: 7,
-                                marginLeft: 7,
-                                marginRight: 7,
-                            }}
+                            style={styles.swipe1}
                         />
                     }
                     activeDot={
                         <View
-                            style={{
-                                backgroundColor: '#fff',
-                                width: 13,
-                                height: 13,
-                                borderRadius: 7,
-                                marginLeft: 7,
-                                marginRight: 7,
-                            }}
+                            style={styles.swipe2}
                         />
                     }
                     loop={false}>
@@ -190,6 +176,22 @@ const styles = StyleSheet.create({
         width,
         height,
     },
+    swipe1: {
+        backgroundColor: 'rgba(255,255,255,.3)',
+        width: 13,
+        height: 13,
+        borderRadius: 7,
+        marginLeft: 7,
+        marginRight: 7,
+    },
+    swipe2: {
+        backgroundColor: '#fff',
+        width: 13,
+        height: 13,
+        borderRadius: 7,
+        marginLeft: 7,
+        marginRight: 7,
+    }
 });
 
 export default SwiperScreen;

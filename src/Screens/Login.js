@@ -48,7 +48,6 @@ class Login extends Component {
                     </Text>
                 </View>
                 <View style={styles.containerInd}>
-                    <Text style={styles.textInd}>+62</Text>
                     <TextInput
                         onChangeText={e => {
                             this.setState({ phone: e });

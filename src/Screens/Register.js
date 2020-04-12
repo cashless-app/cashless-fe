@@ -65,7 +65,6 @@ class Register extends Component {
                     </View>
                     <View style={styles.containerBorder}></View>
                     <View style={styles.containerInd2}>
-                        <Text style={styles.textInd}>+62</Text>
                         <TextInput
                             onChangeText={e => {
                                 this.setState({ phone: e })

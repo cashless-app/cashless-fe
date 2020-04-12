@@ -11,65 +11,58 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux'
 import { getAllNasabah } from '../../Redux/Actions/nasabah'
+import { transfer } from '../../Redux/Actions/transfer'
 import { FlatList } from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-community/async-storage';
 
-// import {useSelector} from 'react-redux';
-// import {transfer} from '../../Redux/Actions/transfer';
-// import {useDispatch} from 'react-redux';
 
 class TransferScreen extends Component {
-  //   const {resultLogin} = useSelector((state) => state.auth)
-  //   const [input, setInput] = useState({
-  //     customer: '',
-  //     id_user: resultLogin.id,
-  //     amount: '',
-  //     id_services: '1',
-  //     description: '',
-  //   });
-
-  //   const dispatch = useDispatch();
-
-  //   const handleSubmit = () => {
-  //     dispatch(transfer(input))
-  //     .then(response => {
-  //       if(response.value.data.status === 'success') {
-  //           props.navigation.navigate('TabScreen');
-  //       } else {
-  //         ToastAndroid.show (
-  //           response.value.data.message,
-  //           ToastAndroid.SHORT,
-  //         );
-  //       }
-  //     })
-  //     .catch(error => alert(error));
-  //   }
-
-  //   console.log('CUST', input);
   state = {
-    nasabah: []
+    nasabah: [],
+    sendphone: '',
+    amount: '',
+    idpenerima: ''
   }
+
   componentDidMount = () => {
     this.getAllNasabah()
   }
   getAllNasabah = async () => {
     await this.props.dispatch(getAllNasabah())
-    // console.log('nasabah', this.props.dispatch(getAllNasabah()));
-
-    // console.log('nasabahkuu', this.props.nasabah.config.data)
-
     this.setState({
       nasabah: this.props.nasabah.nasabah.nasabahData.data
     })
   }
+
+  handleSubmit = async () => {
+    const idpengirim = await AsyncStorage.getItem('id')
+    console.log('pengirim', idpengirim);
+
+    this.props.dispatch(transfer(idpengirim, this.state.idpenerima, this.state.amount))
+      .then(response => {
+        if (response.value.data.status === 'success') {
+          this.props.navigation.navigate('Home')
+        } else {
+          ToastAndroid.show(
+            response.value.data.message,
+            ToastAndroid.SHORT
+          )
+        }
+      })
+  }
   renderItem = ({ item, index }) => {
     return (
-      <TouchableOpacity activeOpacity={0.6} onPress={() => this.props.onPress(item.id)} style={styles.card}>
+      <TouchableOpacity key={item.id} activeOpacity={0.6} style={styles.card} onPress={() => this.setState({
+        sendphone: item.phone,
+        idpenerima: item.id
+      })}>
         <Text>{item.name}</Text>
         <Text>{item.phone}</Text>
       </TouchableOpacity>
     )
   }
   render() {
+    console.log('id user', this.state.sendphone)
     console.log('state nasabah:', this.state.nasabah)
     return (
       <View>
@@ -118,14 +111,10 @@ class TransferScreen extends Component {
               Choose recipient, please!
           </Text>
           </View>
-          {/* <Image
-          style={{width: 415, height: 124}}
-          source={require('../../../assets/kirimsiapa-card.png')}
-        /> */}
           <View style={{ marginHorizontal: 15, marginTop: 5 }}>
             <TextInput
-              onChangeText={Customer => setInput({ ...input, customer: Customer })}
               placeholder="Ketik nomor telepon atau nama"
+              defaultValue={this.state.sendphone}
               keyboardType={'numeric'}
               maxLength={16}
               autoFocus={true}
@@ -139,10 +128,10 @@ class TransferScreen extends Component {
             />
             <View style={{ marginTop: 10 }}>
               <TextInput
-                onChangeText={Amount =>
-                  setInput({ ...input, amount: parseInt(Amount) })
-                }
                 placeholder="Enter the nominal that you want to send"
+                onChangeText={e => {
+                  this.setState({ amount: e })
+                }}
                 keyboardType={'numeric'}
                 maxLength={16}
                 style={{
@@ -155,53 +144,6 @@ class TransferScreen extends Component {
               />
             </View>
           </View>
-
-          {/* COMPONENT BANK */}
-          {/* <View style={{borderBottomWidth: 0.5, borderColor: '#b7b7b7'}}>
-          <View style={{marginHorizontal: 15, marginTop: 15, marginBottom: 5}}>
-            <Text style={{color: '#b7b7b7', fontSize: 12}}>BANK TERSIMPAN</Text>
-          </View>
-        </View>
-        <View
-          style={{
-            borderBottomWidth: 0.5,
-            borderColor: '#b7b7b7',
-            justifyContent: 'center',
-            height: 60,
-          }}>
-          <View style={{marginHorizontal: 15}}>
-            <View
-              style={{justifyContent: 'space-between', flexDirection: 'row'}}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Image
-                  style={{width: 25, height: 25}}
-                  source={require('../../../assets/plus-icon.png')}
-                />
-                <Text
-                  style={{
-                    paddingLeft: 10,
-                    color: '#118eea',
-                    fontWeight: 'bold',
-                  }}>
-                  Kirim ke Rekening Bank
-                </Text>
-              </View>
-              <View style={{justifyContent: 'center'}}>
-                <Image
-                  style={{width: 13, height: 13}}
-                  source={require('../../../assets/arrow-grey.png')}
-                />
-              </View>
-            </View>
-          </View>
-        </View> */}
-
-          {/* COMPONENT NOMOE TELEPON */}
-          {/* <View style={{borderBottomWidth: 0.5, borderColor: '#b7b7b7'}}>
-          <View style={{marginHorizontal: 15, marginTop: 15, marginBottom: 5}}>
-            <Text style={{color: '#b7b7b7', fontSize: 12}}>SEMUA KONTAK</Text>
-          </View>
-        </View> */}
           <View
             style={{
               borderBottomWidth: 0.5,
@@ -217,7 +159,7 @@ class TransferScreen extends Component {
                     style={{ width: 25, height: 25 }}
                     source={require('../../../assets/plus-icon.png')}
                   />
-                  <TouchableOpacity onPress={() => handleSubmit()}>
+                  <TouchableOpacity onPress={this.handleSubmit}>
                     <Text
                       style={{
                         paddingLeft: 10,
@@ -241,20 +183,18 @@ class TransferScreen extends Component {
             <FlatList
               data={this.state.nasabah}
               renderItem={this.renderItem}
+              keyExtractor={item => item.id}
             />
-            {/* <Image
-            style={{width: 373, height: 577}}
-            source={require('../../../assets/kontak-card.png')}
-          /> */}
           </View>
         </ScrollView>
       </View>
     );
   }
 };
-const mapStateToProps = nasabah => {
+const mapStateToProps = (nasabah, transfer) => {
   return {
-    nasabah
+    nasabah,
+    transfer
   };
 };
 
