@@ -73,7 +73,7 @@ const authReducers = (state = initialValue, action) => {
         ...state,
         isLoading: false,
         isFulfilled: true,
-        resultLogin: action.payload ? JSON.parse(action.payload) : []
+        resultLogin: action.payload ? JSON.parse(action.payload) : [],
       };
 
     default:

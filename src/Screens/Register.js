@@ -17,8 +17,7 @@ class Register extends Component {
     phone: '',
     email: '',
     password: '',
-    role: '',
-    nasabah: 'Nasabah',
+    role: 'nasabah',
     errorMsg: [],
   };
 
@@ -33,6 +32,7 @@ class Register extends Component {
       phone: '',
       email: '',
       password: '',
+      nasabah: '',
     });
   };
   render() {
@@ -115,11 +115,8 @@ class Register extends Component {
           <View style={styles.containerBorder} />
           <View style={styles.containerInd2}>
             <TextInput
-              onChangeText={e => {
-                this.setState({role: e});
-              }}
               style={styles.textInput}
-              value={this.state.nasabah}
+              value={this.state.role}
               maxLength={16}
               placeholderTextColor="#84c8f9"
               underlineColorAndroid="transparent"

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import {
   Image,
   ScrollView,
@@ -9,10 +9,9 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-import { ListItem } from 'react-native-elements';
-// import {useSelector, useDispatch} from 'react-redux';
+import {ListItem} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
-// import {getUser} from '../../Redux/Actions/user';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const UserIcon = () => {
   return (
@@ -23,18 +22,6 @@ const UserIcon = () => {
 };
 
 const ProfileScreen = props => {
-  // const user =  useSelector (state => state.user)
-  // const {resultLogin, isFulfilled} = useSelector(state => state.auth);
-
-  // const dispatch = useDispatch();
-  // useEffect( () => {
-  //   const getData = async () => {
-  //       await dispatch( getUser())
-  //       // console.log(user.resultUser)
-  //   }
-  //   getData();
-  // }, [])
-
   let list = [
     {
       title: 'Balance',
@@ -122,51 +109,31 @@ const ProfileScreen = props => {
 
   const deleteToken = () => {
     try {
-      AsyncStorage.removeItem('user');
-      props.navigation.navigate('SplashScreen');
+      AsyncStorage.removeItem('KEY_TOKEN');
     } catch (err) {
       console.log(`The error is: ${err}`);
     }
   };
 
-  const onPressOptions = (e, screen) => {
-    if (screen === 'Setting' || 'Promo') {
-      // console.log(`Navigate to ${screen}`)
-      props.navigation.navigate(screen);
-    } else if (screen === 'Logout') {
-      deleteToken();
-      props.navigation.navigate('AuthScreen');
-    } else {
-      // console.log(`Command to ${screen}`)
-    }
+  const onPressOptions = async (e, screen) => {
+    // if (screen === 'Setting' || 'Promo') {
+    //   // console.log(`Navigate to ${screen}`)
+    //   props.navigation.navigate(screen);
+    // } else if (screen === 'Logout') {
+    //   deleteToken();
+    //   props.navigation.navigate('Login');
+    // } else {
+    // console.log(`Command to ${screen}`)
+    // }/
+    await AsyncStorage.removeItem('KEY_TOKEN');
+    props.navigation.navigate('Login');
   };
 
   const renderContactHeader = () => {
     return (
       <View style={styles.headerContainer}>
         <View style={styles.userRow}>
-          <View style={styles.avatarContainer}>
-            {/* <ImageBackground
-              source={{
-                uri: 'http://pngimg.com/uploads/qr_code/qr_code_PNG2.png',
-              }}
-              imageStyle={styles.qrcodeBackground}
-              style={{width: '100%', height: '100%'}}>
-              {!isFulfilled ? (
-                <UserIcon />
-              // ) : resultLogin.image === '/images/avatar.png' ? (
-              ) : resultLogin.image === '/images/avatar.png' ? (
-                <UserIcon />
-              ) : (
-                <Image
-                  style={styles.userImage}
-                  source={{
-                    uri: `https://clonedana.herokuapp.com/${resultLogin.image}`,
-                  }}
-                />
-              )}
-            </ImageBackground> */}
-          </View>
+          <View style={styles.avatarContainer} />
 
           <View style={styles.userNameRow}>
             {/* <Text style={styles.userNameText}>{resultLogin.name}</Text> */}
@@ -187,14 +154,6 @@ const ProfileScreen = props => {
       <ScrollView style={styles.scroll}>
         <View style={styles.container}>
           <View style={styles.cardContainer}>{renderContactHeader()}</View>
-          {/* <View style={styles.verifyContainer}>
-            <TouchableOpacity style={styles.buttonContainer}>
-              <Text style={{color: '#FFF', marginRight: 40, fontSize: 15}}>
-                VERIFIKASI AKUN KAMU
-              </Text>
-              <Icon name="shield" size={25} color="white" />
-            </TouchableOpacity>
-          </View> */}
         </View>
         {/* ---------- */}
         <View>
@@ -203,9 +162,9 @@ const ProfileScreen = props => {
               title={l.title}
               titleStyle={styles.listFont}
               rightTitle={l.rightTitle}
-              rightTitleStyle={{ fontSize: 15, color: '#78b9e3' }}
-              chevron={{ size: 24 }}
-              onPress={e => onPressOptions(e, l.screen)}
+              rightTitleStyle={{fontSize: 15, color: '#78b9e3'}}
+              chevron={{size: 24}}
+              onPress={onPressOptions}
               containerStyle={styles.listItemContainer}
               leftIcon={
                 <Image source={l.icon} style={styles.imgconContainer} />
@@ -213,31 +172,15 @@ const ProfileScreen = props => {
               pad={0}
             />
           ))}
-          {/* <InfoText text="FEATURE" />
-          {list2.map(l => (
-            <ListItem
-              title={l.title}
-              titleStyle={styles.listFont}
-              rightTitle={l.rightTitle}
-              subtitleStyle={{fontSize: 12}}
-              onPress={e => onPressOptions(e, l.screen)}
-              containerStyle={styles.listItemContainer}
-              subtitle={l.subtitle}
-              chevron={{size: 24}}
-              leftIcon={
-                <Image source={l.icon} style={styles.imgconContainer} />
-              }
-              pad={0}
-            />
-          ))} */}
+
           <InfoText text="GENERAL INFO" />
           {list3.map(l => (
             <ListItem
               title={l.title}
               titleStyle={styles.listFont}
               rightTitle={l.rightTitle}
-              chevron={{ size: 24 }}
-              rightTitleStyle={{ fontSize: 15 }}
+              chevron={{size: 24}}
+              rightTitleStyle={{fontSize: 15}}
               onPress={e => onPressOptions(e, l.screen)}
               containerStyle={styles.listItemContainer}
             />
@@ -248,8 +191,8 @@ const ProfileScreen = props => {
               title={l.title}
               titleStyle={styles.listFont}
               rightTitle={l.rightTitle}
-              rightTitleStyle={{ fontSize: 15 }}
-              chevron={{ size: 24 }}
+              rightTitleStyle={{fontSize: 15}}
+              chevron={{size: 24}}
               onPress={e => onPressOptions(e, l.screen)}
               containerStyle={styles.listItemContainer}
             />
@@ -257,7 +200,7 @@ const ProfileScreen = props => {
         </View>
         {/* ---------- */}
 
-        <View style={{ height: 250 }} />
+        <View style={{height: 250}} />
       </ScrollView>
     </View>
   );
@@ -265,7 +208,7 @@ const ProfileScreen = props => {
 
 export default ProfileScreen;
 
-const InfoText = ({ text }) => (
+const InfoText = ({text}) => (
   <View style={styles.infoTextContainer}>
     <Text style={styles.infoText}>{text}</Text>
   </View>

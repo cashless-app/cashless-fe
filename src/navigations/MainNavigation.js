@@ -11,6 +11,7 @@ import TransferScreen from '../Screens/Transaction/TransferScreen';
 import HomeScanner from '../Screens/Scan/HomeScanner';
 import Login from '../Screens/Login';
 import Register from '../Screens/Register';
+import TopupScreen from '../Screens/Topup/TopupScreen';
 
 const StackLoading = createStackNavigator(
   {
@@ -39,6 +40,7 @@ const StackApp = createStackNavigator(
     HomeScanner,
     TransferScreen,
     HistoryNavigation,
+    TopupScreen,
   },
   {
     // initialRouteName: 'TransferScreen',

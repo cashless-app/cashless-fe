@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import AsyncStorage from '@react-native-community/async-storage';
+
 import {
   View,
   Text,
@@ -8,20 +10,35 @@ import {
   TouchableHighlight,
   FlatList,
 } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const dataPromo = [
   {
     id: '1',
-    image: '../../../assets/promo-icon/promo1.png',
+    image: require('../../../assets/promo-icon/promo1.png'),
   },
   {
     id: '2',
-    image: '../../../assets/promo-icon/promo1.png',
+    image: require('../../../assets/promo-icon/promo2.png'),
   },
   {
     id: '3',
-    image: '../../../assets/promo-icon/promo1.png',
+    image: require('../../../assets/promo-icon/promo3.png'),
+  },
+];
+
+const dataPromo2 = [
+  {
+    id: '1',
+    image: require('../../../assets/promo-icon/promo2.png'),
+  },
+  {
+    id: '2',
+    image: require('../../../assets/promo-icon/promo3.png'),
+  },
+  {
+    id: '3',
+    image: require('../../../assets/promo-icon/promo1.png'),
   },
 ];
 
@@ -31,8 +48,16 @@ class Home extends Component {
   };
 
   renderPromo = item => {
-    console.log('item', item.item.image);
-    return <Image style={styles.imagePromo} source={{ uri: item.item.image }} />;
+    return (
+      <TouchableOpacity>
+        <Image style={styles.imagePromo} source={item.item.image} />
+      </TouchableOpacity>
+    );
+  };
+
+  componentDidMount = async () => {
+    const id = await AsyncStorage.getItem('id');
+    console.log('idgue: ', id);
   };
 
   render() {
@@ -71,7 +96,8 @@ class Home extends Component {
             </View>
 
             <View style={styles.containerImageTop}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('TopupScreen')}>
                 <Image
                   style={styles.iconTop}
                   source={require('../../../assets/top-icon/saldo-icon.png')}
@@ -222,9 +248,11 @@ class Home extends Component {
             />
           </View>
           <View style={styles.containerHotPromo}>
-            <Image
-              style={styles.imageHotPromo}
-              source={require('../../../assets/promo-icon/promo4.png')}
+            <FlatList
+              horizontal
+              data={dataPromo2}
+              renderItem={this.renderPromo}
+              keyExtractor={item => item.id}
             />
           </View>
           <View style={styles.cardNearby}>
@@ -496,6 +524,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderBottomLeftRadius: 6,
     borderBottomRightRadius: 6,
+    marginRight: 20,
   },
   containerHotPromo: {
     marginTop: 12,

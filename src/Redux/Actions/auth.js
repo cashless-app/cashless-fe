@@ -9,9 +9,11 @@ export const login = (formdata, props) => ({
       if (result.data.status === 200) {
         ToastAndroid.show('Login Success', ToastAndroid.SHORT);
         try {
+          console.log('id asyncstorage', result.data.data);
           AsyncStorage.setItem('KEY_TOKEN', result.data.data.token);
           AsyncStorage.setItem('id', JSON.stringify(result.data.data.id));
-          AsyncStorage.setItem('fullname', result.data.data.fullname);
+          AsyncStorage.setItem('name', result.data.data.name);
+
           props.navigate('Home');
         } catch (error) {
           console.log(error);
