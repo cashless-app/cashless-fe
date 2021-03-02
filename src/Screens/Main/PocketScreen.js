@@ -23,15 +23,6 @@ const voucher = [
         "amount": 5000,
         "minAmount": 21500
     },
-    {
-        "image": "https://lh3.googleusercontent.com/WnDx3fK6U4A9vmXo-aX6lzKWDiRKmy3bytWLBfFV665ONgc3G-eNlc6WJR-2XwBV7A",
-        "dateStart": "16 Nov 2019",
-        "dateExpire": "23 Nov 2019",
-        "timeExpire": "15:32",
-        "supriseType": "DANA Surprize Pulsa Voucher",
-        "amount": 5000,
-        "minAmount": 24000
-    }
 ]
 
 const PocketScreen = (props) => {
@@ -88,7 +79,8 @@ export default PocketScreen;
 
 const styles = StyleSheet.create({
     mainContainer: {
-        backgroundColor: "#fafafa"
+        backgroundColor: "#fff",
+        flex: 1
     },
     cardContainer: {
         borderRadius: 10,

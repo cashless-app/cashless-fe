@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -6,13 +6,35 @@ import {
   Image,
   StyleSheet,
   TouchableHighlight,
+  FlatList,
 } from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+
+const dataPromo = [
+  {
+    id: '1',
+    image: '../../../assets/promo-icon/promo1.png',
+  },
+  {
+    id: '2',
+    image: '../../../assets/promo-icon/promo1.png',
+  },
+  {
+    id: '3',
+    image: '../../../assets/promo-icon/promo1.png',
+  },
+];
 
 class Home extends Component {
   static navigationOptions = {
     headerShown: false,
   };
+
+  renderPromo = item => {
+    console.log('item', item.item.image);
+    return <Image style={styles.imagePromo} source={{ uri: item.item.image }} />;
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -38,10 +60,13 @@ class Home extends Component {
 
           <View style={styles.containerIconTop}>
             <View style={styles.containerImageTop}>
-              <Image
-                style={styles.iconTop}
-                source={require('../../../assets/top-icon/pindai-icon.png')}
-              />
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('HomeScanner')}>
+                <Image
+                  style={styles.iconTop}
+                  source={require('../../../assets/top-icon/pindai-icon.png')}
+                />
+              </TouchableOpacity>
               <Text style={styles.textIcon}>Scan</Text>
             </View>
 
@@ -56,7 +81,10 @@ class Home extends Component {
             </View>
 
             <View style={styles.containerImageTop}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() =>
+                  this.props.navigation.navigate('TransferScreen')
+                }>
                 <Image
                   style={styles.iconTop}
                   source={require('../../../assets/top-icon/kirim-icon.png')}
@@ -66,10 +94,12 @@ class Home extends Component {
             </View>
 
             <View style={styles.containerImageTop}>
-              <Image
-                style={styles.iconTop}
-                source={require('../../../assets/top-icon/minta-icon.png')}
-              />
+              <TouchableOpacity>
+                <Image
+                  style={styles.iconTop}
+                  source={require('../../../assets/top-icon/minta-icon.png')}
+                />
+              </TouchableOpacity>
               <Text style={styles.textIcon}>Request</Text>
             </View>
           </View>
@@ -106,9 +136,10 @@ class Home extends Component {
               <View style={styles.containerImageTop}>
                 <Image
                   style={styles.iconMid}
-                  source={require('../../../assets/mid-icon/games-icon.png')}
+                  source={require('../../../assets/mid-icon/mrecharge-icon.png')}
                 />
-                <Text style={styles.textMid}>Games</Text>
+                <Text style={styles.textMid}>Mobile</Text>
+                <Text style={styles.textMid}>Recharge</Text>
               </View>
 
               <View style={styles.containerImageTop}>
@@ -121,9 +152,9 @@ class Home extends Component {
               <View style={styles.containerImageTop}>
                 <Image
                   style={styles.iconMid}
-                  source={require('../../../assets/mid-icon/telepon-icon.png')}
+                  source={require('../../../assets/mid-icon/water-icon.png')}
                 />
-                <Text style={styles.textMid}>Telepon</Text>
+                <Text style={styles.textMid}>Water</Text>
               </View>
               <View style={styles.containerImageTop}>
                 <Image
@@ -137,15 +168,7 @@ class Home extends Component {
               <View style={styles.containerImageTop}>
                 <Image
                   style={styles.iconMid}
-                  source={require('../../../assets/mid-icon/pascabayar-icon.png')}
-                />
-                <Text style={styles.textMid}>Pascabayar</Text>
-              </View>
-
-              <View style={styles.containerImageTop}>
-                <Image
-                  style={styles.iconMid}
-                  source={require('../../../assets/mid-icon/tariksaldo-icon.png')}
+                  source={require('../../../assets/mid-icon/cashout-icon.png')}
                 />
                 <Text style={styles.textMid}>Cashout</Text>
               </View>
@@ -153,9 +176,18 @@ class Home extends Component {
               <View style={styles.containerImageTop}>
                 <Image
                   style={styles.iconMid}
-                  source={require('../../../assets/mid-icon/danakaget-icon.png')}
+                  source={require('../../../assets/mid-icon/tinder-icon.png')}
                 />
-                <Text style={styles.textMid}>DANAIN Kaget</Text>
+                <Text style={styles.textMid}>Tinder</Text>
+              </View>
+
+              <View style={styles.containerImageTop}>
+                <Image
+                  style={styles.iconMid}
+                  source={require('../../../assets/mid-icon/bank-icon.png')}
+                />
+                <Text style={styles.textMid}>Transfer to</Text>
+                <Text style={styles.textMid}>Bank</Text>
               </View>
               <View style={styles.containerImageTop}>
                 <Image
@@ -176,15 +208,17 @@ class Home extends Component {
               </View>
               <View>
                 <TouchableOpacity style={styles.buttonLihatSemua}>
-                  <Text style={styles.textLihatSemua}>LIHAT SEMUA</Text>
+                  <Text style={styles.textLihatSemua}>SEE ALL</Text>
                 </TouchableOpacity>
               </View>
             </View>
           </View>
           <View style={styles.bannerPromo}>
-            <Image
-              style={styles.imagePromo}
-              source={require('../../../assets/promo-icon/promo1.png')}
+            <FlatList
+              horizontal
+              data={dataPromo}
+              renderItem={this.renderPromo}
+              keyExtractor={item => item.id}
             />
           </View>
           <View style={styles.containerHotPromo}>
@@ -198,12 +232,12 @@ class Home extends Component {
               <View style={styles.containerTextPromo}>
                 <Text style={styles.textNearby}>Nearby Me</Text>
                 <Text style={styles.textHidupLebih}>
-                  Temukan merchant DANAIN didekat kamu!
+                  Temukan merchant DANAKU didekat kamu!
                 </Text>
               </View>
               <View>
                 <TouchableOpacity style={styles.buttonLihatSemua}>
-                  <Text style={styles.textLihatSemua}>LIHAT SEMUA</Text>
+                  <Text style={styles.textLihatSemua}>SEE ALL</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -284,13 +318,12 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
   },
-  TextRp: {
+  textRp: {
     marginLeft: 9,
     color: '#a2d8fb',
   },
   textNominal: {
     marginLeft: 9,
-    fontWeight: 'bold',
     fontSize: 17,
     color: '#FFF',
   },
@@ -380,7 +413,7 @@ const styles = StyleSheet.create({
   bottomCard: {
     backgroundColor: '#FFF',
     marginHorizontal: 15,
-    height: 184,
+    height: 200,
     borderBottomWidth: 1,
     borderLeftWidth: 1,
     borderRightWidth: 1,
@@ -390,7 +423,7 @@ const styles = StyleSheet.create({
   },
   containerImageService: {
     flexDirection: 'row',
-    height: '55%',
+    height: '50%',
   },
   containerImageService2: {
     flexDirection: 'row',

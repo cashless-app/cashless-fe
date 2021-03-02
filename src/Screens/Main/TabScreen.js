@@ -6,10 +6,10 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 //Content
 import Home from './Home';
 import History from './HistoryScreen.js';
-// import Pay from './PayScreen';
-// import Pocket from './PocketScreen';
-// import Saya from '../SayaScreen'
-// import ButtonPay from './ButtonPay';
+import Pay from './PayScreen';
+import Pocket from './PocketScreen';
+import ButtonPay from './ButtonPay';
+import Profile from '../Profile/';
 
 const BottomNavigator = createBottomTabNavigator(
   {
@@ -26,47 +26,42 @@ const BottomNavigator = createBottomTabNavigator(
         tabBarVisible: false,
       },
     },
-    // Pay: {
-    //   screen: () => null, // Empty screen
-    //   navigationOptions: () => ({
-    //     tabBarIcon: <ButtonPay />, // Plus button component
-    //     tabBarOptions: {
-    //       activeTintColor: 'white',
-    //       tabStyle: {
-    //         paddingVertical: 7,
-    //       },
-    //       style: {
-    //         backgroundColor: '#fafafa',
-    //         height: 62,
-    //         borderTopColor: '#e6e6e6',
-    //       },
-    //     },
-    //   }),
-    // },
-    // Pocket: {
-    //   screen: Pocket,
-    //   navigationOptions: {
-    //     tabBarLabel: 'Pocket',
-    //   },
-    // },
-    // Saya: {
-    //     screen: Saya,
-    //     navigationOptions: {
-    //         tabBarLabel: 'Profile',
-
-    //     }
-    // },
-    // Saya: {
-    //   screen: Saya,
-    //   navigationOptions: {
-    //     tabBarLabel: 'Profile',
-    //   },
-    // },
+    Pay: {
+      screen: Pay, // Empty screen
+      navigationOptions: () => ({
+        tabBarIcon: <ButtonPay />, // Plus button component
+        tabBarVisible: false,
+        tabBarOptions: {
+          activeTintColor: 'white',
+          tabStyle: {
+            paddingVertical: 7,
+          },
+          style: {
+            backgroundColor: '#fafafa',
+            height: 62,
+            borderTopColor: '#e6e6e6',
+          },
+        },
+      }),
+    },
+    Pocket: {
+      screen: Pocket,
+      navigationOptions: {
+        tabBarLabel: 'Pocket',
+        tabBarVisible: false,
+      },
+    },
+    Profile: {
+      screen: Profile,
+      navigationOptions: {
+        tabBarLabel: 'Profile',
+      },
+    },
   },
   {
     //router config
     initialRouteName: 'Home',
-    Beranda: ['Home', 'Riwayat'],
+    Home: ['Home', 'History', 'Pay', 'Pocket', 'Profile'],
     defaultNavigationOptions: ({navigation}) => ({
       tabBarIcon: ({focused}) => {
         const {routeName} = navigation.state;
@@ -74,15 +69,14 @@ const BottomNavigator = createBottomTabNavigator(
         let sourceImage;
 
         if (routeName === 'Home') {
-          sourceImage = require('../../assets/icon-navi/beranda-icon.png');
+          sourceImage = require('../../../assets/icons-navi/beranda-icon.png');
         } else if (routeName === 'History') {
-          sourceImage = require('../../assets/icon-navi/riwayat-icon.png');
+          sourceImage = require('../../../assets/icons-navi/riwayat-icon.png');
+        } else if (routeName === 'Profile') {
+          sourceImage = require('../../../assets/icons-navi/saya-icon.png');
+        } else {
+          sourceImage = require('../../../assets/icons-navi/pocket-icon.png');
         }
-        // else if (routeName === 'Saya') {
-        //   sourceImage = require('../../assets/icons-navi/saya-icon.png');
-        // } else {
-        //   sourceImage = require('../../assets/icons-navi/pocket-icon.png');
-        // }
 
         return <Image style={focus} source={sourceImage} />;
       },
